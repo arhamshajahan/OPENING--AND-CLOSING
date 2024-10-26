@@ -1,61 +1,91 @@
-#  Ex 10 - OPENING AND CLOSING
+# OPENING--AND-CLOSING
 ## Aim
 To implement Opening and Closing using Python and OpenCV.
 
 ## Software Required
 1. Anaconda - Python 3.7
 2. OpenCV
+ 
 ## Algorithm:
-### Step 1: 
-Import the required libraries.
-### Step 2: 
-Create a text image using cv2.putText().
-### Step 3: 
-Define a structuring element (kernel) for the morphological operations.
-### Step 4: 
-Apply the Opening operation using cv2.morphologyEx() with the cv2.MORPH_OPEN flag.
-### Step 5: 
-Apply the Closing operation using cv2.morphologyEx() with the cv2.MORPH_CLOSE flag.
+### Step1:
+Import the necessary packages
+
+### Step2:
+Create the Text using cv2.putText
+### Step3:
+Create the structuring element
+
+### Step4:
+Use Opening operation
+
+### Step5:
+Use Closing Operation
+
+
+
  
 ## Program:
-### Developed by : ARHAM S
-### Reg.no :212222110005
 ```
-# Import the necessary packages
-import cv2
+Name : ARHAM S
+Register no : 212222110005
+```
+
+#### Import the necessary packages
+
+``` Python
 import numpy as np
-image = np.zeros((300, 700), dtype="uint8")
+import cv2
+import matplotlib.pyplot as plt
+```
 
-# Create the Text using cv2.putText
-cv2.putText(image, 'Opening & Closing', (30, 150), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 5)
+#### Read and show the Original image
 
-# Create the structuring element
-kernel = np.ones((5, 5), np.uint8)
+``` Python
+image = cv2.imread("fp.jpg")
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+plt.imshow(image_rgb)
+plt.title("Original Image")
+plt.axis("off")
+```
 
-# Use Opening operation
-opened_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
 
-# Use Closing Operation
-closed_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
 
-cv2.imshow('Input Image', image)
-cv2.imshow('Opened Image', opened_image)
-cv2.imshow('Closed Image', closed_image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+#### Use Opening operation
+
+```
+opening_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
+opening_image_rgb = cv2.cvtColor(opening_image, cv2.COLOR_BGR2RGB)
+plt.imshow(opening_image_rgb)
+plt.title("Opening Operation")
+plt.axis("off")
+```
+
+
+#### Use Closing Operation
+
+```
+closing_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+closing_image_rgb = cv2.cvtColor(closing_image, cv2.COLOR_BGR2RGB)
+plt.imshow(closing_image_rgb)
+plt.title("Closing Operation")
+plt.axis("off")
+
+
 ```
 ## Output:
 
-### Display the input Image
-![Screenshot 2024-10-23 093300](https://github.com/user-attachments/assets/730461d3-94a2-404c-ab56-9e1c15136110)
+### Display the Original Image
+
+![Screenshot 2024-10-26 112102](https://github.com/user-attachments/assets/d92dcb2e-5091-4d01-a47d-d3ad9a8559d5)
 
 
 ### Display the result of Opening
-![Screenshot 2024-10-23 093310](https://github.com/user-attachments/assets/6c7f4cb2-6171-4e88-8933-1c5de44a80f1)
+![Screenshot 2024-10-26 112108](https://github.com/user-attachments/assets/a7f90968-e7cd-4dec-a2e2-63e05f629d24)
 
 
 ### Display the result of Closing
-![Screenshot 2024-10-23 093320](https://github.com/user-attachments/assets/0de87acf-e71a-4b23-836e-0dfc4265635e)
+![Screenshot 2024-10-26 112115](https://github.com/user-attachments/assets/17ed5392-129f-41b6-88d2-fd7d301480fa)
 
 
 ## Result
